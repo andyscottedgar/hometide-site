@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hometide — Sell Your House the Simple Way</title>
+<meta name="description" content="Hometide buys houses as-is, for cash, on your timeline. No repairs, no fees, no obligation. Get a straightforward offer on your home.">
+<meta property="og:title" content="Hometide — Sell Your House the Simple Way">
+<meta property="og:description" content="We buy houses as-is, for cash, on your timeline. No repairs, no fees, no obligation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hometidehomes.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f3a4d'/%3E%3Cpath d='M4 21c3-4 6-4 9 0s6 4 9 0 5-3 6-1' stroke='%23e8b46a' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 26c3-3.2 6-3.2 9 0s6 3.2 9 0 5-2.4 6-.8' stroke='%23bfd8e0' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --navy:#0f3a4d; --navy-deep:#0a2a39; --teal:#2e6f7e;
+    --sand:#e8b46a; --sand-deep:#c9923f;
+    --paper:#faf7f1; --card:#ffffff; --ink:#1c2b33; --muted:#5b6d76;
+    --line:#e3ded4;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  header{background:var(--paper);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy)}
+  .brand svg{width:34px;height:34px;flex-shrink:0}
+  .brand .name{font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:.01em}
+  .nav .cta-sm{font-size:14px;font-weight:600;color:#fff;background:var(--navy);border-radius:999px;
+    padding:10px 18px;text-decoration:none}
+  .nav .cta-sm:hover{background:var(--teal)}
+
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#f2f6f7;
+    padding:72px 0 0;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+  .hero h1{font-family:var(--serif);font-size:clamp(34px,5.6vw,54px);line-height:1.08;font-weight:700;
+    letter-spacing:-.01em}
+  .hero h1 em{font-style:normal;color:var(--sand)}
+  .hero p.lead{font-size:18px;color:#c8d9e0;margin-top:18px;max-width:46ch}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 8px}
+  .btn{display:inline-block;font-weight:700;font-size:16px;border-radius:999px;padding:14px 26px;
+    text-decoration:none;border:2px solid transparent}
+  .btn.primary{background:var(--sand);color:var(--navy-deep)}
+  .btn.primary:hover{background:var(--sand-deep)}
+  .btn.ghost{border-color:#4a6b7a;color:#e6eef1}
+  .btn.ghost:hover{border-color:var(--sand);color:var(--sand)}
+  .hero .fine{font-size:13px;color:#8fa8b3;margin-bottom:26px}
+  .hero-art{align-self:end;justify-self:center;width:min(340px,80%)}
+  .wave-band{display:block;width:100%;height:56px}
+
+  .ticks{background:var(--card);border-bottom:1px solid var(--line)}
+  .ticks .wrap{display:flex;flex-wrap:wrap;gap:6px 34px;justify-content:center;padding:16px 22px}
+  .tick{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:var(--teal)}
+  .tick svg{width:17px;height:17px;flex-shrink:0}
+
+  section.block{padding:64px 0}
+  .kicker{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+  h2{font-family:var(--serif);font-size:clamp(26px,3.6vw,36px);line-height:1.15;margin:10px 0 14px;color:var(--navy)}
+  .sub{color:var(--muted);max-width:62ch;font-size:16.5px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 22px;
+    box-shadow:0 1px 2px rgba(15,58,77,.05)}
+  .step .num{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--sand-deep);
+    letter-spacing:.06em}
+  .step h3{font-size:18.5px;color:var(--navy);margin:8px 0 8px}
+  .step p{font-size:15px;color:var(--muted)}
+
+  .why{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px;margin-top:30px}
+  @media(max-width:700px){.why-grid{grid-template-columns:1fr}}
+  .why-item{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start}
+  .why-item svg{width:24px;height:24px;margin-top:2px}
+  .why-item h3{font-size:17px;color:var(--navy);margin-bottom:4px}
+  .why-item p{font-size:14.5px;color:var(--muted)}
+
+  .honest{border-left:4px solid var(--sand);background:#fdf6ea;border-radius:0 12px 12px 0;
+    padding:20px 24px;margin-top:34px}
+  .honest p{font-size:15.5px;color:#4a4433}
+  .honest p b{color:var(--navy)}
+
+  .contact{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#f2f6f7;
+    text-align:center}
+  .contact h2{color:#fff}
+  .contact .sub{margin:0 auto;color:#c8d9e0}
+  .contact .ctas{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .contact .reach{margin-top:26px;font-size:15px;color:#c8d9e0}
+  .contact .reach a{color:var(--sand);text-decoration:none;font-weight:600}
+  .contact .reach a:hover{text-decoration:underline}
+
+  footer{background:var(--navy-deep);color:#8fa8b3;padding:30px 0 40px;font-size:13px;line-height:1.7}
+  footer .fbrand{display:flex;align-items:center;gap:8px;color:#c8d9e0;font-family:var(--serif);
+    font-weight:700;font-size:18px;margin-bottom:10px}
+  footer .fbrand svg{width:24px;height:24px}
+  footer a{color:#bfd8e0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f3a4d"/><path d="M4 21c3-4 6-4 9 0s6 4 9 0 5-3 6-1" stroke="#e8b46a" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M4 26c3-3.2 6-3.2 9 0s6 3.2 9 0 5-2.4 6-.8" stroke="#bfd8e0" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="name">Hometide</span>
+    </a>
+    <a class="cta-sm" href="#contact">Get an offer</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Sell your house <em>the simple way.</em></h1>
+      <p class="lead">Hometide buys houses as-is, for cash, on your timeline. No repairs, no showings, no agent fees — just a straightforward offer and a closing date that works for you.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contact">Request a no-obligation offer</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+      <p class="fine">Free to ask. No pressure, no obligation, no cost to you.</p>
+    </div>
+    <svg class="hero-art" viewBox="0 0 300 220" aria-hidden="true">
+      <path d="M150 38 L62 108 h22 v72 h132 v-72 h22 Z" fill="#164a60" stroke="#e8b46a" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="130" y="134" width="40" height="46" rx="3" fill="#0a2a39" stroke="#bfd8e0" stroke-width="3"/>
+      <rect x="98" y="122" width="22" height="22" rx="3" fill="#0a2a39" stroke="#bfd8e0" stroke-width="3"/>
+      <rect x="180" y="122" width="22" height="22" rx="3" fill="#0a2a39" stroke="#bfd8e0" stroke-width="3"/>
+      <path d="M10 198c20-16 40-16 60 0s40 16 60 0 40-16 60 0 40 16 60 0 30-12 40-4" stroke="#e8b46a" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M20 214c18-13 36-13 54 0s36 13 54 0 36-13 54 0 36 13 54 0 28-10 36-3" stroke="#2e6f7e" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <svg class="wave-band" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 28 C150 56 300 0 450 24 C600 48 750 8 900 28 C1050 48 1150 20 1200 28 L1200 56 L0 56 Z" fill="#faf7f1"/>
+  </svg>
+</div>
+
+<div class="ticks">
+  <div class="wrap">
+    <span class="tick"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2e6f7e" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>Sell 100% as-is</span>
+    <span class="tick"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2e6f7e" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>No agent commissions</span>
+    <span class="tick"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2e6f7e" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>You pick the closing date</span>
+    <span class="tick"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2e6f7e" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>No obligation, ever</span>
+  </div>
+</div>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>Three steps. No surprises.</h2>
+    <p class="sub">Selling a house is usually a months-long project. We built Hometide so it doesn't have to be.</p>
+    <div class="steps">
+      <div class="step">
+        <p class="num">STEP 1</p>
+        <h3>Tell us about your house</h3>
+        <p>Reach out with the address and a little about the property and your situation. That's all we need to get started — no paperwork, no commitment.</p>
+      </div>
+      <div class="step">
+        <p class="num">STEP 2</p>
+        <h3>Get a straightforward offer</h3>
+        <p>We review the property and come back with a clear, no-obligation cash offer. We'll walk you through exactly how we got to the number.</p>
+      </div>
+      <div class="step">
+        <p class="num">STEP 3</p>
+        <h3>Close on your timeline</h3>
+        <p>Take your time deciding. If the offer works for you, you choose the closing date — fast if you need it, later if you don't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block why">
+  <div class="wrap">
+    <p class="kicker">Why Hometide</p>
+    <h2>Built for sellers who want it simple.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 11.5 12 4l9 7.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9h13v-9" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>
+        <div><h3>Any condition, any situation</h3>
+        <p>Inherited property, needed repairs you'd rather not make, a move on a deadline, tenants in place — we work with houses and situations of every kind.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2e6f7e" stroke-width="2"/><path d="M12 7v5l3.5 2.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>
+        <div><h3>Your timeline, not ours</h3>
+        <p>Need to close quickly? We can move fast. Need time to sort things out first? The offer works around your schedule, not the other way around.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="#2e6f7e" stroke-width="2"/><path d="M8 3v4M16 3v4M8 11h8M8 15h5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round"/></svg>
+        <div><h3>No fees, no repairs, no cleanup</h3>
+        <p>There are no commissions and no closing costs charged to you. Leave behind what you don't want — we handle the rest.</p></div>
+      </div>
+      <div class="why-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke="#2e6f7e" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4.5" stroke="#2e6f7e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>Straight answers</h3>
+        <p>We'll tell you plainly what we can offer and why. If a traditional sale with an agent would genuinely serve you better, we'll say so.</p></div>
+      </div>
+    </div>
+    <div class="honest">
+      <p><b>How we work, in plain terms:</b> Hometide buys houses directly, and we also work with a network of trusted, vetted buyers. That means when you talk to us, you get a real offer either way — from us or from a buyer we stand behind.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--sand)">Get started</p>
+    <h2>Ready for a no-obligation offer?</h2>
+    <p class="sub">Tell us the property address and anything you'd like us to know. We'll take it from there — no pressure, no cost, no commitment.</p>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:hello@hometidehomes.com?subject=Offer%20request%20for%20my%20house&body=Property%20address%3A%0A%0AAnything%20we%20should%20know%3A%0A%0ABest%20way%20to%20reach%20you%3A">Email us about your house</a>
+    </div>
+    <p class="reach">Or write to us directly: <a href="mailto:hello@hometidehomes.com">hello@hometidehomes.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#164a60"/><path d="M4 21c3-4 6-4 9 0s6 4 9 0 5-3 6-1" stroke="#e8b46a" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M4 26c3-3.2 6-3.2 9 0s6 3.2 9 0 5-2.4 6-.8" stroke="#bfd8e0" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Hometide
+    </div>
+    <p>Hometide is a trade name of SteelVoyage LLC, an Ohio limited liability company.</p>
+    <p>Contact: <a href="mailto:hello@hometidehomes.com">hello@hometidehomes.com</a></p>
+    <p>&copy; 2026 SteelVoyage LLC. All rights reserved. Every offer is made without obligation; nothing on this page is a commitment to purchase any specific property.</p>
+  </div>
+</footer>
+
+</body>
+</html>
