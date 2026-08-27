@@ -337,7 +337,8 @@ document.getElementById("offer-form").addEventListener("submit",function(e){
   };
   fetch("https://hooks.zapier.com/hooks/catch/28667315/4hytg0z/",{
     method:"POST",
-    headers:{"content-type":"application/json"},
+    // no content-type header: a plain-text POST skips the browser's CORS preflight,
+    // which hooks.zapier.com rejects; Zapier still parses the JSON body.
     body:JSON.stringify({
       FirstName:first,LastName:last,Phone:d.get("phone"),Email:d.get("email")||"",
       Address:d.get("address"),
