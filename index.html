@@ -93,6 +93,25 @@
   .contact .reach a{color:var(--sand);text-decoration:none;font-weight:600}
   .contact .reach a:hover{text-decoration:underline}
 
+  .offer-form{max-width:640px;margin:34px auto 0;text-align:left;background:var(--card);
+    border:1px solid var(--line);border-radius:16px;padding:28px 26px;color:var(--ink)}
+  .offer-form .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  @media(max-width:620px){.offer-form .fgrid{grid-template-columns:1fr}}
+  .offer-form .full{grid-column:1 / -1}
+  .offer-form label{display:block;font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:5px}
+  .offer-form input,.offer-form select,.offer-form textarea{width:100%;font:inherit;font-size:15px;
+    color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+  .offer-form textarea{min-height:74px;resize:vertical}
+  .offer-form input:focus,.offer-form select:focus,.offer-form textarea:focus{outline:2px solid var(--teal);outline-offset:1px}
+  .offer-form .consent{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;
+    font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.5}
+  .offer-form .consent input{width:16px;height:16px;margin-top:2px}
+  .offer-form .fbtn{margin-top:18px;text-align:center}
+  .offer-form .fbtn button{font:inherit;font-weight:700;font-size:16px;color:var(--navy-deep);
+    background:var(--sand);border:none;border-radius:999px;padding:14px 34px;cursor:pointer}
+  .offer-form .fbtn button:hover{background:var(--sand-deep)}
+  .offer-form .fnote{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px}
+
   footer{background:var(--navy-deep);color:#8fa8b3;padding:30px 0 40px;font-size:13px;line-height:1.7}
   footer .fbrand{display:flex;align-items:center;gap:8px;color:#c8d9e0;font-family:var(--serif);
     font-weight:700;font-size:18px;margin-bottom:10px}
@@ -208,10 +227,75 @@
     <p class="kicker" style="color:var(--sand)">Get started</p>
     <h2>Ready for a no-obligation offer?</h2>
     <p class="sub">Tell us the property address and anything you'd like us to know. We'll take it from there — no pressure, no cost, no commitment.</p>
-    <div class="ctas">
-      <a class="btn primary" href="mailto:hello@hometidehomes.com?subject=Offer%20request%20for%20my%20house&body=Property%20address%3A%0A%0AAnything%20we%20should%20know%3A%0A%0ABest%20way%20to%20reach%20you%3A">Email us about your house</a>
-    </div>
-    <p class="reach">Or write to us directly: <a href="mailto:hello@hometidehomes.com">hello@hometidehomes.com</a></p>
+    <form class="offer-form" id="offer-form">
+      <div class="fgrid">
+        <div class="full">
+          <label for="f-address">Property address</label>
+          <input id="f-address" name="address" autocomplete="street-address" required>
+        </div>
+        <div>
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="full">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div>
+          <label for="f-why">Why are you thinking of selling?</label>
+          <select id="f-why" name="reason" required>
+            <option value="" selected disabled>Choose one…</option>
+            <option>Inherited the property</option>
+            <option>Relocating / moving</option>
+            <option>Repairs are more than I want to take on</option>
+            <option>Behind on payments</option>
+            <option>Tired of being a landlord</option>
+            <option>Divorce or family change</option>
+            <option>Just exploring my options</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-when">How soon would you like to sell?</label>
+          <select id="f-when" name="timeline" required>
+            <option value="" selected disabled>Choose one…</option>
+            <option>As soon as possible</option>
+            <option>Within 1–3 months</option>
+            <option>3–6 months</option>
+            <option>6+ months / no rush</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-cond">What condition is the house in?</label>
+          <select id="f-cond" name="condition" required>
+            <option value="" selected disabled>Choose one…</option>
+            <option>Move-in ready</option>
+            <option>Needs minor work</option>
+            <option>Needs major repairs</option>
+            <option>Not livable as-is</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-price">Do you have a price in mind?</label>
+          <input id="f-price" name="asking_price" inputmode="numeric" placeholder="Optional — a rough number is fine">
+        </div>
+        <div class="full">
+          <label for="f-more">Anything else we should know?</label>
+          <textarea id="f-more" name="details" required placeholder="In your own words — the situation, the house, what matters to you"></textarea>
+        </div>
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span>I agree that Hometide and its vetted buyer partners may contact me about my property by phone, text, or email, including with automated technology. Consent is not a condition of receiving an offer. Message and data rates may apply.</span>
+      </label>
+      <div class="fbtn"><button type="submit">Request my no-obligation offer</button></div>
+      <p class="fnote">Free to ask. No pressure, no obligation, no cost to you.</p>
+    </form>
+    <p class="reach">Prefer email? Write to us directly: <a href="mailto:hello@hometidehomes.com">hello@hometidehomes.com</a></p>
   </div>
 </section>
 
@@ -227,5 +311,49 @@
   </div>
 </footer>
 
+<script>
+// Submissions post to ClickPoint LeadExec (lead source 72655 / campaign 100001).
+// The key below only permits inserting leads into that source; if the post fails
+// for any reason, fall back to a pre-filled email so no lead is ever lost.
+document.getElementById("offer-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var f=e.target;
+  if(!f.reportValidity()) return;
+  var d=new FormData(f);
+  var name=(d.get("name")||"").trim(), sp=name.indexOf(" ");
+  var first=sp>0?name.slice(0,sp):name, last=sp>0?name.slice(sp+1):"-";
+  var tf={"As soon as possible":"ASAP","Within 1–3 months":"1-3 Months","3–6 months":"3-6 Months","6+ months / no rush":"6+ Months"}[d.get("timeline")]||"";
+  var price=parseFloat(String(d.get("asking_price")||"").replace(/[^0-9.]/g,""))||0;
+  var btn=f.querySelector("button[type=submit]"); btn.disabled=true; btn.textContent="Sending…";
+  var mailFallback=function(){
+    var body="Property address: "+d.get("address")+"\nName: "+name+"\nPhone: "+d.get("phone")+
+      "\nEmail: "+(d.get("email")||"")+"\nWhy selling: "+d.get("reason")+"\nHow soon: "+d.get("timeline")+
+      "\nCondition: "+d.get("condition")+"\nPrice in mind: "+(d.get("asking_price")||"")+
+      "\nAnything else: "+d.get("details")+"\nConsent to contact: yes";
+    location.href="mailto:hello@hometidehomes.com?subject="+encodeURIComponent("Offer request: "+d.get("address"))+
+      "&body="+encodeURIComponent(body);
+    btn.disabled=false; btn.textContent="Request my no-obligation offer";
+  };
+  fetch("https://leads.leadexec.net/v2/insert/general",{
+    method:"POST",
+    headers:{"content-type":"application/json","accept":"application/json","api-key":"85d6f99a-3c53-4b53-bb1b-fca017879ca"},
+    body:JSON.stringify({
+      source:{vid:72655,aid:100001,lid:100000},
+      leads:[{fields:{
+        FirstName:first,LastName:last,Phone:d.get("phone"),Email:d.get("email")||"",
+        Address:d.get("address"),
+        TransactionType:"Sell",Timeframe:tf,AskingPrice:price,
+        Features:"Why selling: "+d.get("reason")+" | Condition: "+d.get("condition")+" | In their words: "+d.get("details"),
+        TCPAContactConsent:"Agreed on hometidehomes.com: contact by phone/text/email incl. automated technology; consent not a condition of offer.",
+        LandingPageURL:location.href
+      }}]
+    })
+  }).then(function(r){return r.json();}).then(function(j){
+    if(j&&j.results&&j.results[0]&&j.results[0].isValid){
+      f.innerHTML='<p style="font-size:17px;text-align:center;padding:30px 10px"><b>Got it — thank you.</b><br>We’ll review your property and reach out shortly with next steps.</p>';
+    } else { mailFallback(); }
+  }).catch(mailFallback);
+});
+</script>
 </body>
 </html>
