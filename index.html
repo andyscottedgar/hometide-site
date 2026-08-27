@@ -312,8 +312,9 @@
 </footer>
 
 <script>
-// Submissions post to ClickPoint LeadExec (lead source 72655 / campaign 100001).
-// The key below only permits inserting leads into that source; if the post fails
+// Submissions post to a Zapier relay ("Hometide form -> ClickPoint LeadExec"),
+// which forwards them into ClickPoint LeadExec (lead source 72655 / campaign 100001).
+// Browsers cannot post to LeadExec directly (no CORS). If the post fails
 // for any reason, fall back to a pre-filled email so no lead is ever lost.
 document.getElementById("offer-form").addEventListener("submit",function(e){
   e.preventDefault();
@@ -334,22 +335,19 @@ document.getElementById("offer-form").addEventListener("submit",function(e){
       "&body="+encodeURIComponent(body);
     btn.disabled=false; btn.textContent="Request my no-obligation offer";
   };
-  fetch("https://leads.leadexec.net/v2/insert/general",{
+  fetch("https://hooks.zapier.com/hooks/catch/28667315/4hytg0z/",{
     method:"POST",
-    headers:{"content-type":"application/json","accept":"application/json","api-key":"85d6f99a-3c53-4b53-bb1b-fca017879ca3"},
+    headers:{"content-type":"application/json"},
     body:JSON.stringify({
-      source:{vid:72655,aid:100001,lid:100000},
-      leads:[{fields:{
-        FirstName:first,LastName:last,Phone:d.get("phone"),Email:d.get("email")||"",
-        Address:d.get("address"),
-        TransactionType:"Sell",Timeframe:tf,AskingPrice:price,
-        Features:"Why selling: "+d.get("reason")+" | Condition: "+d.get("condition")+" | In their words: "+d.get("details"),
-        TCPAContactConsent:"Agreed on hometidehomes.com: contact by phone/text/email incl. automated technology; consent not a condition of offer.",
-        LandingPageURL:location.href
-      }}]
+      FirstName:first,LastName:last,Phone:d.get("phone"),Email:d.get("email")||"",
+      Address:d.get("address"),
+      TransactionType:"Sell",Timeframe:tf,AskingPrice:price,
+      Features:"Why selling: "+d.get("reason")+" | Condition: "+d.get("condition")+" | Price in mind: "+(d.get("asking_price")||"none given")+" | In their words: "+d.get("details"),
+      TCPAContactConsent:"Agreed on hometidehomes.com: contact by phone/text/email incl. automated technology; consent not a condition of offer.",
+      LandingPageURL:location.href
     })
   }).then(function(r){return r.json();}).then(function(j){
-    if(j&&j.results&&j.results[0]&&j.results[0].isValid){
+    if(j&&j.status==="success"){
       f.innerHTML='<p style="font-size:17px;text-align:center;padding:30px 10px"><b>Got it — thank you.</b><br>We’ll review your property and reach out shortly with next steps.</p>';
     } else { mailFallback(); }
   }).catch(mailFallback);
