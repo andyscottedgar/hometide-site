@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="facebook-domain-verification" content="tmj1knhku5plpbpzrgi9oh5hqhqlci" />
 <title>Hometide — Sell Your House the Simple Way</title>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1367266238373716');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1367266238373716&ev=PageView&noscript=1"></noscript>
 <meta name="description" content="Hometide buys houses as-is, for cash, on your timeline. No repairs, no fees, no obligation. Get a straightforward offer on your home.">
 <meta property="og:title" content="Hometide — Sell Your House the Simple Way">
 <meta property="og:description" content="We buy houses as-is, for cash, on your timeline. No repairs, no fees, no obligation.">
@@ -350,6 +361,7 @@ document.getElementById("offer-form").addEventListener("submit",function(e){
     })
   }).then(function(r){return r.json();}).then(function(j){
     if(j&&j.status==="success"){
+      if(window.fbq){fbq('track','Lead');}
       f.innerHTML='<p style="font-size:17px;text-align:center;padding:30px 10px"><b>Got it — thank you.</b><br>We’ll review your property and reach out shortly with next steps.</p>';
     } else { mailFallback(); }
   }).catch(mailFallback);
