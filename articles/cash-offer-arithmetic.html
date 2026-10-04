@@ -345,6 +345,7 @@ src="https://www.facebook.com/tr?id=1367266238373716&ev=PageView&noscript=1"></n
         <input type="checkbox" name="consent" required>
         <span>I agree that Hometide and its vetted buyer partners may contact me about my property by phone, text, or email, including with automated technology. Consent is not a condition of receiving an offer. Message and data rates may apply.</span>
       </label>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="f-website">Leave this empty</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="fbtn"><button type="submit">Request my no-obligation offer</button></div>
       <p class="fnote">Free to ask. No pressure, no obligation, no cost to you.</p>
     </form>
@@ -365,10 +366,12 @@ src="https://www.facebook.com/tr?id=1367266238373716&ev=PageView&noscript=1"></n
 </footer>
 
 <script>
-// Submissions post to a Zapier relay ("Hometide form -> ClickPoint LeadExec"),
-// which forwards them into ClickPoint LeadExec (lead source 72655 / campaign 100001).
-// Browsers cannot post to LeadExec directly (no CORS). If the post fails
-// for any reason, fall back to a pre-filled email so no lead is ever lost.
+// Submissions post to the "Hometide seller form" Google Apps Script web app
+// (deployed under contact@steelvoyage.com, same setup as the WarmKnock buyer form),
+// which emails each lead to the SteelVoyage inbox. It replaced the lapsed Zapier relay.
+// If the endpoint is not set or the post fails for any reason, fall back to a
+// pre-filled email so no lead is ever lost.
+var HT_ENDPOINT="__HOMETIDE_APPS_SCRIPT_EXEC_URL__";
 document.getElementById("offer-form").addEventListener("submit",function(e){
   e.preventDefault();
   var f=e.target;
@@ -388,17 +391,19 @@ document.getElementById("offer-form").addEventListener("submit",function(e){
       "&body="+encodeURIComponent(body);
     btn.disabled=false; btn.textContent="Request my no-obligation offer";
   };
-  fetch("https://hooks.zapier.com/hooks/catch/28667315/4hytg0z/",{
+  if(HT_ENDPOINT.indexOf("https://script.google.com/")!==0){ mailFallback(); return; }
+  fetch(HT_ENDPOINT,{
     method:"POST",
-    // no content-type header: a plain-text POST skips the browser's CORS preflight,
-    // which hooks.zapier.com rejects; Zapier still parses the JSON body.
+    // No Content-Type header on purpose: a plain POST is a "simple" CORS request and
+    // skips the preflight, which the Apps Script endpoint does not answer.
     body:JSON.stringify({
       FirstName:first,LastName:last,Phone:d.get("phone"),Email:d.get("email")||"",
       Address:d.get("address"),
       TransactionType:"Sell",Timeframe:tf,AskingPrice:price,
       Features:"Why selling: "+d.get("reason")+" | Condition: "+d.get("condition")+" | Price in mind: "+(d.get("asking_price")||"none given")+" | In their words: "+d.get("details"),
       TCPAContactConsent:"Agreed on hometidehomes.com: contact by phone/text/email incl. automated technology; consent not a condition of offer.",
-      LandingPageURL:location.href
+      LandingPageURL:location.href,
+      website:d.get("website")||""
     })
   }).then(function(r){return r.json();}).then(function(j){
     if(j&&j.status==="success"){
